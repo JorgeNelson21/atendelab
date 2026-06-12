@@ -2,10 +2,10 @@
 -- version 5.2.1
 -- https://www.phpmyadmin.net/
 --
--- Host: 127.0.0.1:3307
--- Tempo de geração: 10/06/2026 às 02:56
+-- Host: 127.0.0.1
+-- Tempo de geração: 13/06/2026 às 00:11
 -- Versão do servidor: 10.4.32-MariaDB
--- Versão do PHP: 8.2.12
+-- Versão do PHP: 8.0.30
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -40,6 +40,13 @@ CREATE TABLE `atendimentos` (
   `criado_em` timestamp NOT NULL DEFAULT current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
+--
+-- Despejando dados para a tabela `atendimentos`
+--
+
+INSERT INTO `atendimentos` (`id`, `pessoa_id`, `tipo_atendimento_id`, `usuario_id`, `data_atendimento`, `hora_atendimento`, `descricao`, `observacao`, `status`, `criado_em`) VALUES
+(1, 1, 1, 1, '2026-06-13', '00:03:12', 'Aluno com duvidas', NULL, 'aberto', '2026-06-12 22:03:12');
+
 -- --------------------------------------------------------
 
 --
@@ -56,6 +63,13 @@ CREATE TABLE `pessoas` (
   `status` varchar(100) DEFAULT 'ativo'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
+--
+-- Despejando dados para a tabela `pessoas`
+--
+
+INSERT INTO `pessoas` (`id`, `nome`, `documento`, `telefone`, `curso`, `periodo`, `status`) VALUES
+(1, 'Alexandre Silveira', '202610998', '47999998888', 'Engenharia de Software', '4º Semestre', 'ativo');
+
 -- --------------------------------------------------------
 
 --
@@ -68,6 +82,13 @@ CREATE TABLE `tipos_atendimentos` (
   `descricao` text DEFAULT NULL,
   `status` enum('ativo','inativo') DEFAULT 'ativo'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Despejando dados para a tabela `tipos_atendimentos`
+--
+
+INSERT INTO `tipos_atendimentos` (`id`, `nome`, `descricao`, `status`) VALUES
+(1, 'Dúvidas', 'Atendimento para tirar dúvidas', 'ativo');
 
 -- --------------------------------------------------------
 
@@ -135,19 +156,19 @@ ALTER TABLE `usuarios`
 -- AUTO_INCREMENT de tabela `atendimentos`
 --
 ALTER TABLE `atendimentos`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT de tabela `pessoas`
 --
 ALTER TABLE `pessoas`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT de tabela `tipos_atendimentos`
 --
 ALTER TABLE `tipos_atendimentos`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT de tabela `usuarios`
